@@ -71,6 +71,9 @@ export default function App() {
         <Link to="/" className="mr-auto flex items-center gap-2 font-display text-xl font-bold text-rust"><BookMark />BookSwap</Link>
         <nav className="order-3 flex w-full flex-wrap gap-1 sm:order-none sm:w-auto">
           {[[ '/', t.catalog], ['/add', t.add], ['/profile', t.profile]].map(([to, label]) => <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `rounded-md px-3 py-2 text-sm transition ${isActive ? 'bg-ink font-semibold text-paper' : 'text-muted hover:bg-hover-surface hover:text-ink'}`}>{label}</NavLink>)}
+          <NavLink to="/admin" aria-label={t.admin} title={t.admin} className={({ isActive }) => `inline-flex h-9 w-9 items-center justify-center rounded-md transition ${isActive ? 'bg-ink text-paper' : 'text-muted hover:bg-hover-surface hover:text-ink'}`}>
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m12 3 8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3Z" /><path d="m9 12 2 2 4-4" /></svg>
+          </NavLink>
         </nav>
         <div className="flex items-center gap-2">
           <button type="button" onClick={switchTheme} aria-label={theme === 'night' ? t.themeMorning : t.themeNight} title={theme === 'night' ? t.themeMorning : t.themeNight} className="rounded-md border border-line p-2 hover:border-rust hover:bg-hover-surface" >
