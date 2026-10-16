@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --paper: 250 247 242;
+  --surface: 255 255 255;
+  --hover-surface: 239 226 212;
+  --ink: 42 36 32;
+  --muted: 122 111 102;
+  --line: 230 221 208;
+  --rust: 180 83 42;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: rgb(var(--ink));
+  background: rgb(var(--paper));
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --paper: 27 23 19;
+  --surface: 38 33 28;
+  --hover-surface: 56 48 39;
+  --ink: 241 233 223;
+  --muted: 167 155 143;
+  --line: 58 51 43;
+  --rust: 224 121 74;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+::selection { background: #ead2c2; }
+
+body, body * {
+  transition: background-color 320ms ease, color 320ms ease, border-color 320ms ease;
+}
+.dark .bg-white { background-color: rgb(var(--surface)); }
+
+@keyframes theme-reveal {
+  from { clip-path: circle(0 at var(--theme-x, 50vw) var(--theme-y, 50vh)); }
+  to { clip-path: circle(150vmax at var(--theme-x, 50vw) var(--theme-y, 50vh)); }
+}
+::view-transition-old(root) { animation: none; }
+::view-transition-new(root) { animation: theme-reveal 520ms cubic-bezier(.2, .7, .1, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  body, body * { transition-duration: 1ms; }
+  ::view-transition-new(root) { animation-duration: 1ms; }
+}
